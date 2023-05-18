@@ -138,14 +138,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
     }
     if ($pregunta_actual == $num_preguntas - 1) {
-        
-        $mysqli = conectar_db();
-
-        $stmt = $mysqli->prepare("INSERT INTO resultado (cedula, resultado) VALUES (?, ?) ");
-        $stmt->bind_param('ss', $cedula);
-        $stmt->execute();
-
-        header('Location: resultados.php');
+        session_destroy();
+        header('Location: index.php'); // Cambiar por la pagina de resultados :D
         exit;
     } 
     else {
